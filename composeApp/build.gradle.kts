@@ -64,6 +64,10 @@ kotlin {
             //Dependencies for serialization
 
             implementation(libs.kotlin.json.serialization)
+
+            //Dependencies for kamel
+
+            implementation(libs.kamel.image.loader)
         }
         iosMain.dependencies {
 
