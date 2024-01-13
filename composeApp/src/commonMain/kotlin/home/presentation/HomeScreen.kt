@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import core.data.remote.model.DataDto
 import detail.presentation.DetailScreen
 import io.kamel.image.KamelImage
@@ -41,7 +41,7 @@ class HomeScreen : Screen {
     @Composable
     override fun Content() {
 
-        val navigator = LocalNavigator.current
+        val navigator = LocalNavigator.currentOrThrow
 
         var agentName by remember { mutableStateOf("") }
         var image by remember { mutableStateOf("") }
@@ -62,34 +62,31 @@ class HomeScreen : Screen {
             }
         }
 
-        MaterialTheme {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = "Home screen", fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(text = "Home screen", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(20.dp))
 
-                Spacer(modifier = Modifier.height(20.dp))
+            Text(text = "Agent name: $agentName")
 
-                Text(text = "Agent name: $agentName")
+            Spacer(modifier = Modifier.height(20.dp))
 
-                Spacer(modifier = Modifier.height(20.dp))
+            KamelImage(
+                resource = asyncPainterResource(image),
+                contentDescription = null,
+                modifier = Modifier.size(300.dp)
+            )
 
-                KamelImage(
-                    resource = asyncPainterResource(image),
-                    contentDescription = null,
-                    modifier = Modifier.size(300.dp)
-                )
+            Spacer(modifier = Modifier.height(20.dp))
 
-                Spacer(modifier = Modifier.height(20.dp))
-
-                Button(onClick = {
-                    navigator?.push(DetailScreen())
-                }) {
-                    Text("Go to detail")
-                }
+            Button(onClick = {
+                navigator.push(DetailScreen())
+            }) {
+                Text("Go to detail")
             }
         }
     }
