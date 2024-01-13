@@ -68,6 +68,12 @@ kotlin {
             //Dependencies for kamel
 
             implementation(libs.kamel.image.loader)
+
+            //Dependencies for voyager
+
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.tabNavigator)
+            implementation(libs.voyager.transitions)
         }
         iosMain.dependencies {
 
