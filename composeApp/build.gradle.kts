@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -59,6 +60,10 @@ kotlin {
             //Dependencies for coroutines
 
             implementation(libs.kotlinx.coroutines.core)
+
+            //Dependencies for serialization
+
+            implementation(libs.kotlin.json.serialization)
         }
         iosMain.dependencies {
 
