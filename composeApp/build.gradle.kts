@@ -35,6 +35,14 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+
+            //Dependencies for ktor android
+
+            implementation(libs.ktor.client.okhttp)
+
+            //Dependencies for coroutines
+
+            implementation(libs.kotlinx.coroutines.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,6 +51,20 @@ kotlin {
             implementation(compose.ui)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+
+            //Dependencies for ktor common
+
+            implementation(libs.ktor.client.core)
+
+            //Dependencies for coroutines
+
+            implementation(libs.kotlinx.coroutines.core)
+        }
+        iosMain.dependencies {
+
+            //Dependencies for ktor ios
+
+            implementation(libs.ktor.client.darwin)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
