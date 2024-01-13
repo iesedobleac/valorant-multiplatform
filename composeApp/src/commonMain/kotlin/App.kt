@@ -2,8 +2,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import core.data.remote.model.DataDto
+import io.kamel.image.KamelImage
+import io.kamel.image.asyncPainterResource
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
@@ -32,6 +34,7 @@ private val json = Json { ignoreUnknownKeys = true }
 fun App() {
 
     var agentName by remember { mutableStateOf("") }
+    var image by remember { mutableStateOf("") }
 
     val client = HttpClient()
     val coroutineScope = rememberCoroutineScope()
@@ -44,6 +47,7 @@ fun App() {
 
             agent.agent?.let { safeAgent ->
                 agentName = safeAgent.displayName.orEmpty()
+                image = safeAgent.fullPortrait.orEmpty()
             }
         }
     }
@@ -60,6 +64,14 @@ fun App() {
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(text = "Agent name: $agentName")
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            KamelImage(
+                resource = asyncPainterResource(image),
+                contentDescription = null,
+                modifier = Modifier.size(300.dp)
+            )
         }
     }
 }
