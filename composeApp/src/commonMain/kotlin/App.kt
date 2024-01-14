@@ -18,7 +18,9 @@ fun App() {
 
     MaterialTheme {
 
-        TabNavigator(tab = HomeTab,
+        TabNavigator(
+            tab = HomeTab,
+            disposeSteps = true,
             tabDisposable = {
 
                 TabDisposable(
@@ -33,6 +35,7 @@ fun App() {
                 })
             }, bottomBar = {
                 BottomNavigation {
+
                     tabs.forEach { tab ->
                         TabNavigationItem(tab)
                     }
