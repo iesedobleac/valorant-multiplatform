@@ -44,6 +44,10 @@ kotlin {
             //Dependencies for coroutines
 
             implementation(libs.kotlinx.coroutines.android)
+
+            //Dependencies for koin
+
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -74,6 +78,16 @@ kotlin {
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.tabNavigator)
             implementation(libs.voyager.transitions)
+
+            //Dependencies for moko
+
+            implementation(libs.moko.mvvm)
+
+            //Dependencies for koin
+
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.compose)
+            api(libs.koin.core)
         }
         iosMain.dependencies {
 
