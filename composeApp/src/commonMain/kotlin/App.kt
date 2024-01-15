@@ -9,6 +9,7 @@ import cafe.adriel.voyager.navigator.tab.TabDisposable
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import home.presentation.HomeTab
 import maps.presentation.MapsTab
+import org.koin.compose.KoinContext
 import utils.TabNavigationItem
 
 @Composable
@@ -16,34 +17,35 @@ fun App() {
 
     val tabs = listOf(HomeTab, MapsTab)
 
-    MaterialTheme {
+    KoinContext {
 
-        TabNavigator(
-            tab = HomeTab,
-            disposeSteps = true,
-            tabDisposable = {
+        MaterialTheme {
 
-                TabDisposable(
-                    navigator = it,
-                    tabs = tabs
-                )
-            }
-        ) {
-            Scaffold(topBar = {
-                TopAppBar(title = {
-                    Text(text = it.current.options.title)
-                })
-            }, bottomBar = {
-                BottomNavigation {
+            TabNavigator(
+                tab = HomeTab,
+                tabDisposable = {
 
-                    tabs.forEach { tab ->
-                        TabNavigationItem(tab)
-                    }
+                    TabDisposable(
+                        navigator = it,
+                        tabs = tabs
+                    )
                 }
-            }, content = {
-                CurrentTab()
-            })
+            ) {
+                Scaffold(topBar = {
+                    TopAppBar(title = {
+                        Text(text = it.current.options.title)
+                    })
+                }, bottomBar = {
+                    BottomNavigation {
+
+                        tabs.forEach { tab ->
+                            TabNavigationItem(tab)
+                        }
+                    }
+                }, content = {
+                    CurrentTab()
+                })
+            }
         }
     }
-
 }

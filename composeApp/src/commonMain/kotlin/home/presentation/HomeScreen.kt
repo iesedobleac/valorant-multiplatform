@@ -17,7 +17,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -32,62 +34,79 @@ import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
+import org.koin.compose.koinInject
 import utils.AGENTS_ENDPOINT
 
 class HomeScreen : Screen {
 
-    private val json = Json { ignoreUnknownKeys = true }
 
     @Composable
     override fun Content() {
+        HomeScreenContent()
+    }
+}
 
-        val navigator = LocalNavigator.currentOrThrow
+@Composable
+fun HomeScreenContent(viewModel: HomeViewModel = koinInject<HomeViewModel>()) {
 
-        var agentName by remember { mutableStateOf("") }
-        var image by remember { mutableStateOf("") }
+    val json = Json { ignoreUnknownKeys = true }
 
-        val client = HttpClient()
-        val coroutineScope = rememberCoroutineScope()
+    val navigator = LocalNavigator.currentOrThrow
+    var agentName by remember { mutableStateOf("") }
+    var image by remember { mutableStateOf("") }
 
-        LaunchedEffect(key1 = Unit) {
-            coroutineScope.launch {
-                val response = client.get(AGENTS_ENDPOINT)
-                val body = response.bodyAsText()
-                val agent = json.decodeFromString<DataDto>(body)
+    val client = HttpClient()
+    val coroutineScope = rememberCoroutineScope()
 
-                agent.agent?.let { safeAgent ->
-                    agentName = safeAgent.displayName.orEmpty()
-                    image = safeAgent.fullPortrait.orEmpty()
-                }
+    LaunchedEffect(key1 = Unit) {
+        coroutineScope.launch {
+            val response = client.get(AGENTS_ENDPOINT)
+            val body = response.bodyAsText()
+            val agent = json.decodeFromString<DataDto>(body)
+
+            agent.agent?.let { safeAgent ->
+                agentName = safeAgent.displayName.orEmpty()
+                image = safeAgent.fullPortrait.orEmpty()
             }
         }
+    }
 
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(text = "Home screen", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
 
-            Spacer(modifier = Modifier.height(20.dp))
+        Text(
+            text = viewModel.name,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            color = Color.Blue
+        )
 
-            Text(text = "Agent name: $agentName")
+        Spacer(modifier = Modifier.height(20.dp))
 
-            Spacer(modifier = Modifier.height(20.dp))
+        Text(text = "Home screen", fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
-            KamelImage(
-                resource = asyncPainterResource(image),
-                contentDescription = null,
-                modifier = Modifier.size(300.dp)
-            )
+        Spacer(modifier = Modifier.height(20.dp))
 
-            Spacer(modifier = Modifier.height(20.dp))
+        Text(text = "Agent name: $agentName")
 
-            Button(onClick = {
-                navigator.push(DetailScreen())
-            }) {
-                Text("Go to detail")
-            }
+        Spacer(modifier = Modifier.height(20.dp))
+
+        KamelImage(
+            resource = asyncPainterResource(image),
+            contentDescription = null,
+            modifier = Modifier.size(300.dp)
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(onClick = {
+            navigator.push(DetailScreen())
+        }) {
+            Text("Go to detail")
         }
     }
 }
