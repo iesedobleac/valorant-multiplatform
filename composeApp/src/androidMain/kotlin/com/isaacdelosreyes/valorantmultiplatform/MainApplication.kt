@@ -1,7 +1,10 @@
 package com.isaacdelosreyes.valorantmultiplatform
 
 import android.app.Application
-import di.SharedModule
+import di.RemoteModule
+import di.RepositoryModule
+import di.UseCaseModule
+import di.ViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -14,7 +17,12 @@ class MainApplication: Application() {
         startKoin {
             androidContext(this@MainApplication)
             androidLogger()
-            modules(SharedModule)
+            modules(
+                RemoteModule,
+                RepositoryModule,
+                UseCaseModule,
+                ViewModelModule
+            )
         }
     }
 }
