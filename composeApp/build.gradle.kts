@@ -1,5 +1,4 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -16,9 +15,7 @@ kotlin {
             }
         }
     }
-    
-    jvm("desktop")
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -31,8 +28,7 @@ kotlin {
     }
     
     sourceSets {
-        val desktopMain by getting
-        
+
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -60,6 +56,9 @@ kotlin {
             //Dependencies for ktor common
 
             implementation(libs.ktor.client.core)
+            implementation(libs.ktor.negotiation)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.serialization)
 
             //Dependencies for coroutines
 
@@ -95,9 +94,6 @@ kotlin {
 
             implementation(libs.ktor.client.darwin)
         }
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
-        }
     }
 }
 
@@ -132,17 +128,5 @@ android {
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
-    }
-}
-
-compose.desktop {
-    application {
-        mainClass = "MainKt"
-
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.isaacdelosreyes.valorantmultiplatform"
-            packageVersion = "1.0.0"
-        }
     }
 }
