@@ -1,5 +1,6 @@
 package core.data.remote
 
+import core.data.remote.model.AgentsDto
 import core.data.remote.model.DataDto
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -19,6 +20,8 @@ import utils.TIMEOUT
 interface ValorantWs {
 
     suspend fun getAgentById(agentId: String): DataDto
+
+    suspend fun getAgents(): AgentsDto
 }
 
 @OptIn(ExperimentalSerializationApi::class)
@@ -49,5 +52,9 @@ class ValorantWsImpl : ValorantWs {
         return client.get(
             urlString = "$AGENTS_ENDPOINT/$agentId"
         ).body()
+    }
+
+    override suspend fun getAgents(): AgentsDto {
+        return client.get(AGENTS_ENDPOINT).body()
     }
 }

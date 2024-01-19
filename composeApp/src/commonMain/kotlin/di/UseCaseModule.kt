@@ -1,11 +1,11 @@
 package di
 
-import home.domain.usecases.GetAgentByIdUseCase
+import home.domain.usecases.GetAgentsUseCase
 import org.koin.dsl.module
 
 val UseCaseModule = module {
 
     single {
-        GetAgentByIdUseCase(get())
+        GetAgentsUseCase(get())
     }
 }

@@ -1,16 +1,16 @@
 package home.domain.repository
 
 import core.data.remote.ValorantWs
-import core.data.remote.model.DataDto
+import core.data.remote.model.AgentsDto
 
 interface HomeRepository {
 
-    suspend fun getAgentById(agentId: String): DataDto
-
+    suspend fun getAgents(): AgentsDto
 }
+
 class HomeRepositoryImpl(private val valorantWs: ValorantWs): HomeRepository {
 
-    override suspend fun getAgentById(agentId: String): DataDto {
-        return valorantWs.getAgentById(agentId)
+    override suspend fun getAgents(): AgentsDto {
+        return valorantWs.getAgents()
     }
 }
