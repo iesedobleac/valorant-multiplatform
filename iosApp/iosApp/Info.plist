@@ -46,5 +46,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+	    <string>roboto_black.ttf</string>
+	    <string>roboto_bold.ttf</string>
+	    <string>roboto_medium.ttf</string>
+	    <string>roboto_regular.ttf</string>
+	    <string>tungsten.ttf</string>
+	    <string>valorant.ttf</string>
+	</array>
 </dict>
 </plist>

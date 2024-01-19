@@ -10,6 +10,12 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		6A18A5C22B5AFE88000D0A53 /* roboto_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A18A5BC2B5AFE88000D0A53 /* roboto_bold.ttf */; };
+		6A18A5C32B5AFE88000D0A53 /* roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A18A5BD2B5AFE88000D0A53 /* roboto_medium.ttf */; };
+		6A18A5C42B5AFE88000D0A53 /* valorant.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A18A5BE2B5AFE88000D0A53 /* valorant.ttf */; };
+		6A18A5C52B5AFE88000D0A53 /* tungsten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A18A5BF2B5AFE88000D0A53 /* tungsten.ttf */; };
+		6A18A5C62B5AFE88000D0A53 /* roboto_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A18A5C02B5AFE88000D0A53 /* roboto_regular.ttf */; };
+		6A18A5C72B5AFE88000D0A53 /* roboto_black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A18A5C12B5AFE88000D0A53 /* roboto_black.ttf */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -17,7 +23,13 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
-		7555FF7B242A565900829871 /* .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = .app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A18A5BC2B5AFE88000D0A53 /* roboto_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_bold.ttf; sourceTree = "<group>"; };
+		6A18A5BD2B5AFE88000D0A53 /* roboto_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_medium.ttf; sourceTree = "<group>"; };
+		6A18A5BE2B5AFE88000D0A53 /* valorant.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = valorant.ttf; sourceTree = "<group>"; };
+		6A18A5BF2B5AFE88000D0A53 /* tungsten.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tungsten.ttf; sourceTree = "<group>"; };
+		6A18A5C02B5AFE88000D0A53 /* roboto_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_regular.ttf; sourceTree = "<group>"; };
+		6A18A5C12B5AFE88000D0A53 /* roboto_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = roboto_black.ttf; sourceTree = "<group>"; };
+		7555FF7B242A565900829871 /* .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = .app; path = ValorantMultiplatform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -60,6 +72,12 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				6A18A5C12B5AFE88000D0A53 /* roboto_black.ttf */,
+				6A18A5BC2B5AFE88000D0A53 /* roboto_bold.ttf */,
+				6A18A5BD2B5AFE88000D0A53 /* roboto_medium.ttf */,
+				6A18A5C02B5AFE88000D0A53 /* roboto_regular.ttf */,
+				6A18A5BF2B5AFE88000D0A53 /* tungsten.ttf */,
+				6A18A5BE2B5AFE88000D0A53 /* valorant.ttf */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
@@ -135,8 +153,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A18A5C52B5AFE88000D0A53 /* tungsten.ttf in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				6A18A5C62B5AFE88000D0A53 /* roboto_regular.ttf in Resources */,
+				6A18A5C22B5AFE88000D0A53 /* roboto_bold.ttf in Resources */,
+				6A18A5C32B5AFE88000D0A53 /* roboto_medium.ttf in Resources */,
+				6A18A5C72B5AFE88000D0A53 /* roboto_black.ttf in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				6A18A5C42B5AFE88000D0A53 /* valorant.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
