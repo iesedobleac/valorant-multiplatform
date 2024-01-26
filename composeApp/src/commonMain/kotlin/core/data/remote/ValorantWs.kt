@@ -19,7 +19,7 @@ import utils.TIMEOUT
 
 interface ValorantWs {
 
-    suspend fun getAgentById(agentId: String): DataDto
+    suspend fun getAgentDetails(agentId: String): DataDto
 
     suspend fun getAgents(): AgentsDto
 }
@@ -48,7 +48,7 @@ class ValorantWsImpl : ValorantWs {
         }
     }
 
-    override suspend fun getAgentById(agentId: String): DataDto {
+    override suspend fun getAgentDetails(agentId: String): DataDto {
         return client.get(
             urlString = "$AGENTS_ENDPOINT/$agentId"
         ).body()

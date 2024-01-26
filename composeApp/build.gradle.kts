@@ -44,11 +44,15 @@ kotlin {
             //Dependencies for koin
 
             implementation(libs.koin.android)
+
+            //Dependencies for decompose
+
+            implementation(libs.decompose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
@@ -72,11 +76,10 @@ kotlin {
 
             implementation(libs.kamel.image.loader)
 
-            //Dependencies for voyager
+            //Dependencies for decompose
 
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.tabNavigator)
-            implementation(libs.voyager.transitions)
+            implementation(libs.decompose)
+            implementation(libs.decompose.jetbrains)
 
             //Dependencies for moko
 
