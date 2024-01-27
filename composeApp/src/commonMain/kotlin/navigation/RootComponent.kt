@@ -3,6 +3,7 @@ package navigation
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
@@ -38,13 +39,25 @@ class RootComponent(
                         navigation.pop()
                     })
             )
+
+            Configuration.MapScreen -> Child.MapScreen(
+                MapScreenComponent(componentContext = context)
+            )
         }
+    }
+
+    fun openHome() {
+        navigation.bringToFront(Configuration.HomeScreen)
+    }
+    fun openMaps() {
+        navigation.bringToFront(Configuration.MapScreen)
     }
 
     sealed class Child {
 
         data class HomeScreen(val homeScreenComponent: HomeScreenComponent) : Child()
         data class DetailScreen(val detailScreenComponent: DetailScreenComponent) : Child()
+        data class MapScreen(val mapScreenComponent: MapScreenComponent): Child()
     }
 
     @Serializable
@@ -55,5 +68,8 @@ class RootComponent(
 
         @Serializable
         data class DetailScreen(val agentId: String) : Configuration()
+
+        @Serializable
+        data object MapScreen: Configuration()
     }
 }
