@@ -1,7 +1,7 @@
 package detail.presentation
 
-import core.data.model.Ability
-import core.data.model.Agent
+import core.data.model.agent.Ability
+import core.data.model.agent.Agent
 
 data class DetailState(
     val agent: Agent? = null,

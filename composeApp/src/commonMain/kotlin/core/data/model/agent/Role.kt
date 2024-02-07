@@ -1,4 +1,4 @@
-package core.data.model
+package core.data.model.agent
 
 data class Role(
     val displayIcon: String?,
