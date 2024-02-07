@@ -1,9 +1,9 @@
 package home.domain.usecases
 
-import core.data.remote.model.toDomain
-import detail.domain.repository.DetailsRepository
+import core.data.remote.model.agent.toDomain
+import detail.domain.repository.AgentDetailsRepository
 
-class GetAgentDetailsUseCase(private val repository: DetailsRepository) {
+class GetAgentDetailsUseCase(private val repository: AgentDetailsRepository) {
 
     suspend operator fun invoke(agentId: String) =
         repository.getAgentDetails(agentId).agent?.toDomain()

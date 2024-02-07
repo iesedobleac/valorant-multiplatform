@@ -27,12 +27,12 @@ class RootComponent(
         return when (config) {
             Configuration.HomeScreen -> Child.HomeScreen(
                 HomeScreenComponent(componentContext = context, navigateToDetail = {
-                    navigation.pushNew(Configuration.DetailScreen(it))
+                    navigation.pushNew(Configuration.AgentDetailScreen(it))
                 })
             )
 
-            is Configuration.DetailScreen -> Child.DetailScreen(
-                DetailScreenComponent(
+            is Configuration.AgentDetailScreen -> Child.AgentDetailScreen(
+                AgentDetailScreenComponent(
                     agentId = config.agentId,
                     componentContext = context,
                     goBack = {
@@ -41,7 +41,21 @@ class RootComponent(
             )
 
             Configuration.MapScreen -> Child.MapScreen(
-                MapScreenComponent(componentContext = context)
+                MapScreenComponent(
+                    componentContext = context,
+                    navigateToDetail = {
+                        //TODO
+                    })
+            )
+
+            is Configuration.MapDetailScreen -> Child.MapDetailScreen(
+                MapDetailScreenComponent(
+                    mapId = config.mapId,
+                    componentContext = context,
+                    goBack = {
+                        navigation.pop()
+                    }
+                )
             )
         }
     }
@@ -49,6 +63,7 @@ class RootComponent(
     fun openHome() {
         navigation.bringToFront(Configuration.HomeScreen)
     }
+
     fun openMaps() {
         navigation.bringToFront(Configuration.MapScreen)
     }
@@ -56,8 +71,9 @@ class RootComponent(
     sealed class Child {
 
         data class HomeScreen(val homeScreenComponent: HomeScreenComponent) : Child()
-        data class DetailScreen(val detailScreenComponent: DetailScreenComponent) : Child()
-        data class MapScreen(val mapScreenComponent: MapScreenComponent): Child()
+        data class AgentDetailScreen(val agentDetailScreenComponent: AgentDetailScreenComponent) : Child()
+        data class MapScreen(val mapScreenComponent: MapScreenComponent) : Child()
+        data class MapDetailScreen(val mapDetailScreenComponent: MapDetailScreenComponent): Child()
     }
 
     @Serializable
@@ -67,9 +83,12 @@ class RootComponent(
         data object HomeScreen : Configuration()
 
         @Serializable
-        data class DetailScreen(val agentId: String) : Configuration()
+        data class AgentDetailScreen(val agentId: String) : Configuration()
 
         @Serializable
-        data object MapScreen: Configuration()
+        data object MapScreen : Configuration()
+
+        @Serializable
+        data class MapDetailScreen(val mapId: String) : Configuration()
     }
 }

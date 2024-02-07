@@ -2,7 +2,7 @@ package navigation
 
 import com.arkivanov.decompose.ComponentContext
 
-class DetailScreenComponent(
+class AgentDetailScreenComponent(
     val agentId: String,
     componentContext: ComponentContext,
     private val goBack: () -> Unit,

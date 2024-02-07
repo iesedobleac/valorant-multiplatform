@@ -1,6 +1,6 @@
-package core.data.remote.model
+package core.data.remote.model.agent
 
-import core.data.model.Role
+import core.data.model.agent.Role
 import kotlinx.serialization.Serializable
 
 @Serializable

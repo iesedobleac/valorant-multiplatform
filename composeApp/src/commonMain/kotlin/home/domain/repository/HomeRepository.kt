@@ -1,7 +1,7 @@
 package home.domain.repository
 
 import core.data.remote.ValorantWs
-import core.data.remote.model.AgentsDto
+import core.data.remote.model.agent.AgentsDto
 
 interface HomeRepository {
 

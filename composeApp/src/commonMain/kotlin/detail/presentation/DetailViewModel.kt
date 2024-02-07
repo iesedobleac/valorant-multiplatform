@@ -3,8 +3,8 @@ package detail.presentation
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import core.data.model.Ability
-import core.data.model.Agent
+import core.data.model.agent.Ability
+import core.data.model.agent.Agent
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import home.domain.usecases.GetAgentDetailsUseCase
 import kotlinx.coroutines.Dispatchers

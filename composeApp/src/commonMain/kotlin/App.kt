@@ -22,7 +22,7 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stac
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
 import detail.presentation.DetailScreen
 import home.presentation.HomeScreen
-import maps.MapScreen
+import maps.presentation.MapsScreen
 import navigation.RootComponent
 import navigation.TopLevelDestination
 import org.koin.compose.KoinContext
@@ -77,8 +77,8 @@ fun App(rootComponent: RootComponent) {
             }, content = {
                 Children(stack = childStack, animation = stackAnimation(slide())) { child ->
                     when (val instance = child.instance) {
-                        is RootComponent.Child.DetailScreen -> {
-                            DetailScreen(instance.detailScreenComponent)
+                        is RootComponent.Child.AgentDetailScreen -> {
+                            DetailScreen(instance.agentDetailScreenComponent)
                         }
 
                         is RootComponent.Child.HomeScreen -> {
@@ -86,7 +86,11 @@ fun App(rootComponent: RootComponent) {
                         }
 
                         is RootComponent.Child.MapScreen -> {
-                            MapScreen(instance.mapScreenComponent)
+                            MapsScreen(instance.mapScreenComponent)
+                        }
+
+                        is RootComponent.Child.MapDetailScreen -> {
+                            //TODO
                         }
                     }
                 }
@@ -97,5 +101,5 @@ fun App(rootComponent: RootComponent) {
 
 @Composable
 fun showNavigationBar(instance: RootComponent.Child): Boolean {
-    return instance !is RootComponent.Child.DetailScreen
+    return instance !is RootComponent.Child.AgentDetailScreen
 }

@@ -1,11 +1,11 @@
-package core.data.remote.model
+package core.data.remote.model.map
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DataDto(
+data class MapsDto(
     @SerialName("data")
-    val agent: AgentDto?,
-    val status: Int?
+    val maps: List<MapDto>,
+    val status: Int
 )

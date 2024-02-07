@@ -45,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
-import navigation.DetailScreenComponent
+import navigation.AgentDetailScreenComponent
 import org.koin.compose.koinInject
 import theme.SherpaBlue50
 import theme.WhiteBroken
@@ -54,7 +54,7 @@ import utils.tungstenFontFamily
 
 @Composable
 fun DetailScreen(
-    component: DetailScreenComponent,
+    component: AgentDetailScreenComponent,
     viewModel: DetailViewModel = koinInject<DetailViewModel>()
 ) {
 
